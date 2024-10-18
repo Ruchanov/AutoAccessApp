@@ -1,0 +1,18 @@
+<nav class="topNav">
+    <a routerLink="/">
+      <img class="logo" [src]="logo" alt="AutoAccess Logo" />
+    </a>
+    <div class="navLinks">
+      <a routerLink="/cars">Cars</a>
+      <a href="https://wa.me/7776887839">Support</a>
+      <a routerLink="/likes">Likes</a>
+      <a routerLink="/about">About</a>
+      <ng-container *ngIf="isLoggedIn; else loginLink">
+        <a routerLink="/profile">My Profile</a>
+        <button (click)="handleLogout()" class="logoutButton">Logout</button>
+      </ng-container>
+      <ng-template #loginLink>
+        <a routerLink="/login">Login</a>
+      </ng-template>
+    </div>
+  </nav>
