@@ -7,16 +7,39 @@ import { Router } from '@angular/router';
   styleUrls: ['./login-page.component.css']
 })
 export class LoginPageComponent {
-  email : string = '';
-  password : string = '';
+  email: string = '';
+  password: string = '';
+  showError: boolean = false;
+  loginAttempts: number = 0;
 
-  constructor(private router: Router) {}
+  mockUsers = [
+    { email: 'user1@mail.ru', password: 'pass123456' },
+    { email: 'user1@gmail.com', password: 'pass123456' },
+  ];
+
+  constructor(private router: Router) { }
 
   onSubmit() {
-    // Логика авторизации пользователя
-    console.log(`Email: ${this.email}, Password: ${this.password}`);
-    // После успешной авторизации перенаправляем
-    this.router.navigate(['/dashboard']);
+    const user = this.mockUsers.find(
+      (user) => user.email === this.email && user.password === this.password
+    );
+
+    if (user) {
+      console.log(`Email: ${this.email}, Password: ${this.password}`);
+      this.router.navigate(['/main']);
+      this.showError = false;
+    } else {
+      this.email = '';
+      this.password = '';
+      this.showError = true;
+      this.loginAttempts++; 
+    }
+
+  }
+
+  isFormValid(): boolean {
+    return this.email.length > 0 &&
+      this.password.length > 0;
   }
 
   toggleForm() {

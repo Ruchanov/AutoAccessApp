@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { nonAuthUser } from '../../models';
+import { InputsCheckerDirective } from '../../directives/password-length-checker/inputs-checker.directive';
 
 @Component({
   selector: 'app-register-page',
@@ -7,21 +9,26 @@ import { Router } from '@angular/router';
   styleUrls: ['./register-page.component.css']
 })
 export class RegisterPageComponent {
-  username : string = '';
-  email : string = '';
-  password : string = '' ;
+  newUser: nonAuthUser = { username: '', email: '', password: '' };
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) { }
 
   onSubmit() {
-    // Логика регистрации пользователя
-    console.log(`Username: ${this.username}, Email: ${this.email}, Password: ${this.password}`);
-    // После успешной регистрации перенаправляем
-    this.router.navigate(['/dashboard']);
+    if(this.isFormValid()){
+      console.log(`Username: ${this.newUser.username}, Email: ${this.newUser.email}, Password: ${this.newUser.password}`);
+      this.router.navigate(['/login']);
+    }else{
+      alert('Форма заполнена некорректно. Проверьте данные и попробуйте снова.');
+    }
   }
 
+  isFormValid(): boolean {
+    return this.newUser.username.length > 0 && 
+           this.newUser.email.includes('@') &&
+           this.newUser.password.length >= 8;
+  }
+  
   toggleForm() {
-    // Переключение на форму входа
     this.router.navigate(['/login']);
   }
 }

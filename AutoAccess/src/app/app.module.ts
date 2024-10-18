@@ -8,6 +8,11 @@ import { MainPageComponent } from './pages/main-page/main-page.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { RegisterPageComponent } from './pages/register-page/register-page.component'
+import { FormsModule } from '@angular/forms';
+import { InputsCheckerDirective } from './directives/password-length-checker/inputs-checker.directive';
+import { EmailCorrectnessCheckerDirective } from './directives/email-correctness-checker/email-correctness-checker.directive';
+import { UsernameInputFillCheckerDirective } from './directives/username-filling-checker/username-input-fill-checker.directive';
+import { CarListPageComponent } from './pages/car-list-page/car-list-page.component';
 
 @NgModule({
   declarations: [
@@ -16,11 +21,16 @@ import { RegisterPageComponent } from './pages/register-page/register-page.compo
     MainPageComponent,
     NavBarComponent,
     LoginPageComponent,
-    RegisterPageComponent
+    RegisterPageComponent,
+    InputsCheckerDirective,
+    EmailCorrectnessCheckerDirective,
+    UsernameInputFillCheckerDirective,
+    CarListPageComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [
     provideClientHydration()
