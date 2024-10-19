@@ -32,9 +32,24 @@
     margin-bottom: 15px;
 }
 
+.inputGroup div {
+    display: flex;
+    align-items: center;
+    height: fit-content;
+    justify-content: space-between;
+}
+
+.inputGroup div p {
+    font-size: 10x;
+    color: red;
+    height: fit-content;
+    margin: 0;
+    padding: 0;
+}
+
 .inputGroup label {
     display: block;
-    margin-bottom: 5px;
+    /* margin-bottom: 5px; */
     color: #ffffff;
 }
 
@@ -59,6 +74,11 @@
     font-weight: 600;
     border-radius: 5px;
     cursor: pointer;
+}
+
+.loginButton:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
 }
 
 .toggleForm {

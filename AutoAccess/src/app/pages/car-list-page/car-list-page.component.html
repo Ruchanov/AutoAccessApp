@@ -1,0 +1,32 @@
+<div class="container">
+    <app-nav-bar></app-nav-bar>
+    <h1 class="title">Car List</h1>
+  
+    <div class="searchAndFilterContainer">
+      <form class="searchForm">
+        <input type="text" placeholder="Search cars...">
+      </form>
+      <button class="filterButton">Filter</button>
+    </div>
+  
+    <ul class="list">
+      <li *ngFor="let car of cars" class="carItem">
+        <img [src]="car.imageUrl" alt="{{car.name}}" class="carImage">
+        
+        <div class="carInfo">
+          <div class="header">
+            <h2>{{ car.name }}</h2>
+            <span 
+              class="likeIcon" 
+              [ngClass]="{ liked: car.liked }" 
+              (click)="toggleLike(car)">
+              ❤️
+            </span>
+          </div>
+          <div class="details">{{ car.description }}</div>
+          <div class="footer">{{ car.price }}</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+  
