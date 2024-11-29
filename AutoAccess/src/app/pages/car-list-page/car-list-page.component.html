@@ -1,33 +1,125 @@
 <div class="container">
-    <app-nav-bar></app-nav-bar>
-    <h1 class="title">Car List</h1>
-  
-    <div class="searchAndFilterContainer">
-      <form class="searchForm">
-        <input type="text" placeholder="Search cars...">
-      </form>
-      <button class="filterButton">Filter</button>
-    </div>
-  
-    <ul class="list">
-      <li *ngFor="let car of cars" class="carItem">
-        <img [src]="car.imageUrl" alt="{{car.name}}" class="carImage">
-        
-        <div class="carInfo">
-          <div class="header">
-            <h2>{{ car.name }}</h2>
-            
-            <span 
-              class="likeIcon" 
-              [ngClass]="{ liked: car.liked }" 
-              (click)="toggleLike(car)">
-              ❤️
-            </span>
-          </div>
-          <div class="details">{{ car.description }}</div>
-          <div class="footer">{{ car.price }}</div>
-        </div>
-      </li>
-    </ul>
+  <app-nav-bar></app-nav-bar>
+
+  <h1 class="title">Car List</h1>
+
+  <!-- Поиск и фильтры -->
+  <div class="searchAndFilterContainer">
+    <!-- Форма поиска -->
+    <form class="searchForm" (submit)="$event.preventDefault()">
+      <input
+        type="text"
+        placeholder="Search cars..."
+        [(ngModel)]="searchQuery"
+        (ngModelChange)="loadCars()"
+        name="search"
+      />
+    </form>
+
+    <!-- Кнопка фильтров -->
+    <button class="filterButton" (click)="toggleFilter()">
+      {{ isFilterVisible ? 'Hide Filters' : 'Show Filters' }}
+    </button>
   </div>
-  
+
+  <!-- Панель фильтров -->
+  <div *ngIf="isFilterVisible" class="filters">
+    <form (ngSubmit)="applyFilter()">
+      <div>
+        <label for="year">Year:</label>
+        <input
+          type="number"
+          id="year"
+          [(ngModel)]="filterParams.year"
+          name="year"
+        />
+      </div>
+
+      <div>
+        <label for="marka">Marka:</label>
+        <input
+          type="text"
+          id="marka"
+          [(ngModel)]="filterParams.marka"
+          name="marka"
+        />
+      </div>
+
+      <div>
+        <label for="model">Model:</label>
+        <input
+          type="text"
+          id="model"
+          [(ngModel)]="filterParams.model"
+          name="model"
+        />
+      </div>
+
+      <div>
+        <label for="min_price">Min Price:</label>
+        <input
+          type="number"
+          id="min_price"
+          [(ngModel)]="filterParams.min_price"
+          name="min_price"
+        />
+      </div>
+
+      <div>
+        <label for="max_price">Max Price:</label>
+        <input
+          type="number"
+          id="max_price"
+          [(ngModel)]="filterParams.max_price"
+          name="max_price"
+        />
+      </div>
+
+      <div>
+        <label for="min_mileage">Min Mileage:</label>
+        <input
+          type="number"
+          id="min_mileage"
+          [(ngModel)]="filterParams.min_mileage"
+          name="min_mileage"
+        />
+      </div>
+
+      <div>
+        <label for="max_mileage">Max Mileage:</label>
+        <input
+          type="number"
+          id="max_mileage"
+          [(ngModel)]="filterParams.max_mileage"
+          name="max_mileage"
+        />
+      </div>
+
+      <button type="submit" class="applyFilterButton">Apply Filters</button>
+    </form>
+  </div>
+
+  <!-- Список автомобилей -->
+  <ul class="list">
+    <li *ngFor="let car of cars" class="carItem">
+      <img [src]="car.image" alt="{{ car.name }}" class="carImage" />
+
+      <div class="carInfo">
+        <div class="header">
+          <h2>{{ car.name }}</h2>
+
+          <span
+            class="likeIcon"
+            [ngClass]="{ liked: car.liked }"
+            (click)="toggleLike(car.id)"
+          >
+            ❤️
+          </span>
+        </div>
+
+        <div class="details">{{ car.description }}</div>
+        <div class="footer">{{ car.price | currency: 'USD' }}</div>
+      </div>
+    </li>
+  </ul>
+</div>
