@@ -13,6 +13,7 @@ import { InputsCheckerDirective } from './directives/password-length-checker/inp
 import { EmailCorrectnessCheckerDirective } from './directives/email-correctness-checker/email-correctness-checker.directive';
 import { UsernameInputFillCheckerDirective } from './directives/username-filling-checker/username-input-fill-checker.directive';
 import { CarListPageComponent } from './pages/car-list-page/car-list-page.component';
+import { CarsService } from './services/cars/cars.service';
 
 @NgModule({
   declarations: [
