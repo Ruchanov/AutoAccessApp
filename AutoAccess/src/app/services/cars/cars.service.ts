@@ -7,7 +7,7 @@ import { Car } from '../../models';
   providedIn: 'root',
 })
 export class CarsService {
-  private apiUrl = 'http://127.0.0.1:8000/api/products/';
+  private apiUrl = 'http://127.0.0.1:8000/api/cars/';
 
   constructor(private http: HttpClient) {}
 

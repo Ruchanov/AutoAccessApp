@@ -1,34 +1,35 @@
 <div class="loginContainer">
-    <form (ngSubmit)="onSubmit()" class="loginForm">
-      <h1 class="loginTitle">Register</h1>
-  
-      <div class="inputGroup">
-        <label for="username">Username</label>
-        <input type="text" appUsernameInputFillChecker [(ngModel)]="newUser.username" id="username"  name="username" />
-      </div>
-  
-      <div class="inputGroup">
-        <div>
-          <label for="email">Email</label>
-          <p *ngIf="!newUser.email.includes('@')">Email должен содержать знак &#64;</p>
-        </div>
-        <input type="email" appEmailCorrectnessChecker [(ngModel)]="newUser.email" id="email"  name="email" />
-      </div>
-  
-      <div class="inputGroup">
-        <div>
-          <label for="password">Password</label>
-          <p *ngIf="newUser.password.length < 8">Требуется минимум 8 символов!</p>
-        </div>
+  <form (ngSubmit)="onSubmit()" class="loginForm">
+    <h1 class="loginTitle">Register</h1>
 
-        <input type="password" appInputsChecker [minLength]="8" [(ngModel)]="newUser.password" id="password" name="password" />
-      </div>
-      
-      <button type="submit" class="loginButton" [disabled]="!isFormValid()">Register</button>
-      <div class="toggleForm">
-        <span>Already have an account? </span>
-        <button (click)="toggleForm()">Login</button>
-      </div>
-    </form>
-  </div>
-  
+    <div class="inputGroup">
+      <label for="username">Username</label>
+      <input type="text" [(ngModel)]="newUser.username" id="username" name="username" required />
+    </div>
+
+    <div class="inputGroup">
+      <label for="email">Email</label>
+      <input type="email" [(ngModel)]="newUser.email" id="email" name="email" required />
+    </div>
+
+    <div class="inputGroup">
+      <label for="password">Password</label>
+      <input type="password" [(ngModel)]="newUser.password" id="password" name="password" required minlength="8" />
+    </div>
+
+    <div class="inputGroup">
+      <label for="passwordConfirmation">Confirm Password</label>
+      <input type="password" [(ngModel)]="newUser.passwordConfirmation" id="passwordConfirmation" name="passwordConfirmation" required />
+    </div>
+
+    <div *ngIf="errorMessage">
+      <p style="color: red;">{{ errorMessage }}</p>
+    </div>
+
+    <button type="submit" class="loginButton" [disabled]="!isFormValid()">Register</button>
+    <div class="toggleForm">
+      <span>Already have an account? </span>
+      <button type="button" (click)="toggleForm()">Login</button>
+    </div>
+  </form>
+</div>

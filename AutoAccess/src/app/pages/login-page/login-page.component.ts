@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth_service/auth.service';
 
 @Component({
   selector: 'app-login-page',
@@ -7,43 +8,31 @@ import { Router } from '@angular/router';
   styleUrls: ['./login-page.component.css']
 })
 export class LoginPageComponent {
-  email: string = '';
+  username: string = '';
   password: string = '';
-  showError: boolean = false;
+  errorMessage: string = '';
   loginAttempts: number = 0;
 
-  mockUsers = [
-    { email: 'user1@mail.ru', password: 'pass123456' },
-    { email: 'user1@gmail.com', password: 'pass123456' },
-  ];
-
-  constructor(private router: Router) { }
+  constructor(private authService: AuthService, private router: Router) {}
 
   onSubmit() {
-    const user = this.mockUsers.find(
-      (user) => user.email === this.email && user.password === this.password
-    );
-
-    if (user) {
-      console.log(`Email: ${this.email}, Password: ${this.password}`);
-      this.router.navigate(['/main']);
-      this.showError = false;
-    } else {
-      this.email = '';
-      this.password = '';
-      this.showError = true;
-      this.loginAttempts++; 
-    }
-
+    this.authService.login(this.username, this.password).subscribe({
+      next: (response: any) => {
+        this.authService.setTokens(response.access, response.refresh);
+        this.router.navigate(['/cars']);
+      },
+      error: () => {
+        this.errorMessage = 'Invalid username or password.';
+        this.loginAttempts++;
+      }
+    });
   }
 
   isFormValid(): boolean {
-    return this.email.length > 0 &&
-      this.password.length > 0;
+    return this.username.trim().length > 0 && this.password.trim().length > 0;
   }
 
   toggleForm() {
-    // Переключение на форму регистрации
     this.router.navigate(['/register']);
   }
 }

@@ -1,23 +1,25 @@
 <div class="loginContainer">
-    <form (ngSubmit)="onSubmit()" class="loginForm">
-      <h1 class="loginTitle">Login</h1>
-  
-      <div class="inputGroup">
-        <label for="email">Email</label>
-        <input type="email" [(ngModel)]="email" id="email"  name="email" required />
-      </div>
-  
-      <div class="inputGroup">
-        <label for="password">Password</label>
-        <input type="password" [(ngModel)]="password" id="password"  name="password" required />
-      </div>
-      <div *ngIf="showError">
-        <p style="color: red; display: inline-block;">Неверный email или пароль! Попытка: {{ loginAttempts }}</p>
-      </div>
-      <button type="submit" class="loginButton" [disabled]="!isFormValid()">Login</button>
-      <div class="toggleForm">
-        <span>Don't have an account? </span>
-        <button (click)="toggleForm()">Register</button>
-      </div>
-    </form>
-  </div>
+  <form (ngSubmit)="onSubmit()" class="loginForm">
+    <h1 class="loginTitle">Login</h1>
+
+    <div class="inputGroup">
+      <label for="username">Username</label>
+      <input type="text" [(ngModel)]="username" id="username" name="username" required />
+    </div>
+
+    <div class="inputGroup">
+      <label for="password">Password</label>
+      <input type="password" [(ngModel)]="password" id="password" name="password" required />
+    </div>
+
+    <div *ngIf="errorMessage">
+      <p style="color: red;">{{ errorMessage }}</p>
+    </div>
+
+    <button type="submit" class="loginButton" [disabled]="!isFormValid()">Login</button>
+    <div class="toggleForm">
+      <span>Don't have an account? </span>
+      <button type="button" (click)="toggleForm()">Register</button>
+    </div>
+  </form>
+</div>
