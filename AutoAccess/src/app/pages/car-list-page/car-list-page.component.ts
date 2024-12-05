@@ -5,22 +5,20 @@ import { Car } from '../../models';
 @Component({
   selector: 'app-car-list-page',
   templateUrl: './car-list-page.component.html',
-  styleUrls: ['./car-list-page.component.css'],
+  styleUrls: ['./car-list-page.component.css']
 })
 export class CarListPageComponent implements OnInit {
   cars: Car[] = [];
   searchQuery: string = '';
   isFilterVisible: boolean = false;
 
-  // Параметры фильтрации
   filterParams = {
-    year: '',
-    marka: '',
-    model: '',
     min_price: '',
     max_price: '',
     min_mileage: '',
     max_mileage: '',
+    min_year: '',
+    max_year: ''
   };
 
   favoriteCars: Set<number> = new Set();
@@ -59,6 +57,7 @@ export class CarListPageComponent implements OnInit {
         this.updateCarLikeStatus(carId, false);
       });
     } else {
+      console.log('Добавляем в избранное...');
       this.carsService.addToFavorites(carId).subscribe(() => {
         this.favoriteCars.add(carId);
         this.updateCarLikeStatus(carId, true);
@@ -67,12 +66,13 @@ export class CarListPageComponent implements OnInit {
   }
 
   updateCarLikeStatus(carId: number, liked: boolean): void {
+    console.log(`Обновляем статус лайка для машины ID ${carId}: ${liked}`);
     this.cars = this.cars.map((car) =>
       car.id === carId ? { ...car, liked } : car
     );
   }
 
   applyFilter(): void {
-    this.loadCars(); // Перезагрузить список автомобилей с новыми фильтрами
+    this.loadCars();
   }
 }

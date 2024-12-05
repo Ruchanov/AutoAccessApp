@@ -1,0 +1,40 @@
+<div class="filterForm">
+    <input
+      type="number"
+      name="min_price"
+      placeholder="Мин. цена"
+      (input)="onInputChange($event)"
+    />
+    <input
+      type="number"
+      name="max_price"
+      placeholder="Макс. цена"
+      (input)="onInputChange($event)"
+    />
+    <input
+      type="number"
+      name="min_mileage"
+      placeholder="Мин. пробег"
+      (input)="onInputChange($event)"
+    />
+    <input
+      type="number"
+      name="max_mileage"
+      placeholder="Макс. пробег"
+      (input)="onInputChange($event)"
+    />
+    <input
+      type="number"
+      name="min_year"
+      placeholder="Мин. год"
+      (input)="onInputChange($event)"
+    />
+    <input
+      type="number"
+      name="max_year"
+      placeholder="Макс. год"
+      (input)="onInputChange($event)"
+    />
+    <button (click)="onApplyFilter()">Фильтровать</button>
+  </div>
+  

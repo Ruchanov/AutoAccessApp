@@ -1,0 +1,24 @@
+<div class="container">
+    <app-nav-bar></app-nav-bar>
+  
+    <h1 class="title">Избранные автомобили</h1>
+  
+    <ul class="list">
+      <li *ngFor="let car of favoriteCars" class="carItem">
+        <img [src]="car.image" alt="{{ car.marka }} {{ car.model }}" class="carImage" />
+  
+        <div class="carInfo">
+          <div class="header">
+            <h2>{{ car.marka }} {{ car.model }}</h2>
+            <span class="likeIcon liked" (click)="removeFromFavorites(car.id)">❤️</span>
+          </div>
+  
+          <div class="details">
+            {{ car.year }}/{{ car.mileage }}km/{{ car.body_type }}/{{ car.transmission }}
+          </div>
+          <div class="footer">{{ car.price }} ₸</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+  

@@ -4,6 +4,7 @@ import { MainPageComponent } from './pages/main-page/main-page.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { RegisterPageComponent } from './pages/register-page/register-page.component'
 import { CarListPageComponent } from './pages/car-list-page/car-list-page.component';
+import { LikesPageComponent } from './pages/likes-page/likes-page.component';
 
 const routes: Routes = [
   { path: 'main', component: MainPageComponent },
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterPageComponent },
   { path: 'main', component: MainPageComponent },
   { path: '', redirectTo: 'main', pathMatch: 'full' },
+  { path: 'likes', component: LikesPageComponent },
   { path: '**', redirectTo: 'login' }
 ];
 

@@ -15,6 +15,9 @@ import { EmailCorrectnessCheckerDirective } from './directives/email-correctness
 import { UsernameInputFillCheckerDirective } from './directives/username-filling-checker/username-input-fill-checker.directive';
 import { CarListPageComponent } from './pages/car-list-page/car-list-page.component';
 import { CarsService } from './services/cars/cars.service';
+import { SearchFormComponent } from './components/search-form/search-form.component';
+import { FilterFormComponent } from './components/filter-form/filter-form.component';
+import { LikesPageComponent } from './pages/likes-page/likes-page.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,10 @@ import { CarsService } from './services/cars/cars.service';
     InputsCheckerDirective,
     EmailCorrectnessCheckerDirective,
     UsernameInputFillCheckerDirective,
-    CarListPageComponent
+    CarListPageComponent,
+    SearchFormComponent,
+    FilterFormComponent,
+    LikesPageComponent
   ],
   imports: [
     BrowserModule,

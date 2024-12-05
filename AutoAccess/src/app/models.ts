@@ -10,13 +10,27 @@ export interface NonAuthUser {
   passwordConfirmation?: string;
 }
 
+// export interface Car {
+//   id: number;
+//   name: string;
+//   model: string;
+//   price: number;
+//   description: string;
+//   image: string;
+//   category: number;
+//   liked?: boolean;
+// }
 export interface Car {
   id: number;
   name: string;
+  marka: string;
   model: string;
+  year: number;
   price: number;
-  description: string;
+  mileage: number;
+  body_type: string;
+  transmission: string;
   image: string;
-  category: number;
+  description: string;
   liked?: boolean;
 }
