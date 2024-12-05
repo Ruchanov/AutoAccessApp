@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,6 +14,7 @@ import { InputsCheckerDirective } from './directives/password-length-checker/inp
 import { EmailCorrectnessCheckerDirective } from './directives/email-correctness-checker/email-correctness-checker.directive';
 import { UsernameInputFillCheckerDirective } from './directives/username-filling-checker/username-input-fill-checker.directive';
 import { CarListPageComponent } from './pages/car-list-page/car-list-page.component';
+import { CarsService } from './services/cars/cars.service';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,8 @@ import { CarListPageComponent } from './pages/car-list-page/car-list-page.compon
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [
     provideClientHydration()
