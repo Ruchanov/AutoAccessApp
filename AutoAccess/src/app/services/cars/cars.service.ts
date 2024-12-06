@@ -12,7 +12,10 @@ export class CarsService {
   constructor(private http: HttpClient) {}
 
   private getAuthHeaders(): HttpHeaders {
-    const token = localStorage.getItem('access_token');
+    let token = '';
+    if (typeof window !== 'undefined') {
+      token = localStorage.getItem('access_token') || '';
+    }
     return new HttpHeaders().set('Authorization', `Bearer ${token}`);
   }
 
@@ -21,9 +24,9 @@ export class CarsService {
     return this.http.get<Car[]>(this.apiUrl, { params: httpParams });
   }
 
-  getFavorites(): Observable<number[]> {
-    const headers = this.getAuthHeaders();
-    return this.http.get<number[]>(`${this.apiUrl}get_favorites/`, { headers });
+  getFavorites(): Observable<Car[]> {
+    const headers = this.getAuthHeaders(); // Убедитесь, что аутентификационные заголовки добавляются
+    return this.http.get<Car[]>(`${this.apiUrl}get_favorites/`, { headers });
   }
 
   addToFavorites(carId: number): Observable<void> {

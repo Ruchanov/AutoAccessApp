@@ -16,17 +16,23 @@ export class LikesPageComponent implements OnInit {
     this.loadFavorites();
   }
 
+
   loadFavorites(): void {
-    this.carsService.getFavorites().subscribe((favoriteIds) => {
-      this.carsService.getCars({ ids: favoriteIds.join(',') }).subscribe((cars) => {
-        this.favoriteCars = cars;
-      });
+    this.carsService.getFavorites().subscribe((favoriteCars) => {
+      this.favoriteCars = favoriteCars.map((car) => ({
+        ...car,
+        liked: true, // Отмечаем машины как избранные
+      }));
     });
   }
 
   removeFromFavorites(carId: number): void {
+    // Удаляем машину из списка избранных
+    this.favoriteCars = this.favoriteCars.filter((car) => car.id !== carId);
+
+    // Вызываем сервис для удаления из избранного (предполагается, что сервис поддерживает этот метод)
     this.carsService.removeFromFavorites(carId).subscribe(() => {
-      this.favoriteCars = this.favoriteCars.filter(car => car.id !== carId);
+      console.log(`Car with ID ${carId} removed from favorites`);
     });
   }
 }
