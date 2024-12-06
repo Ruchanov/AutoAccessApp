@@ -1,24 +1,24 @@
-
 <div class="container">
-<app-nav-bar></app-nav-bar>
+    <app-nav-bar></app-nav-bar>
 
-<div class="profile-page">
-    <div class="user-info-section">
-        <h2>Welcome, {{ userName }}</h2>
-    </div>
-    
-    <div class="posts-section">
-        <h3>Your Posts</h3>
-        <a routerLink="createPost" class="create-post-button">Create New Post</a>
-    
-        <div class="posts-container">
-        <div class="post-card" *ngFor="let post of userPosts">
-            <img [src]="post.image" [alt]="post.marka" />
-            <h4>{{ post.marka }} {{ post.model }}</h4>
-            <p>{{ post.year }}/{{ post.mileage }}km/{{ post.body_type }}/{{ post.transmission }}</p>
-            <p>{{ post.price | number }} ₸</p>
+    <div class="profile-page">
+        <div class="user-info-section">
+            <h2>Welcome, {{ userName }}</h2>
         </div>
+
+        <div class="posts-section">
+            <h3>Your Posts</h3>
+            <a routerLink="createPost" class="create-post-button">Create New Post</a>
+
+            <div class="posts-container">
+                <div class="post-card" *ngFor="let post of userPosts">
+                    <img [src]="post.image" [alt]="post.marka" />
+                    <h4>{{ post.marka }} {{ post.model }}</h4>
+                    <p>{{ post.year }}/{{ post.mileage }}km/{{ post.body_type }}/{{ post.transmission }}</p>
+                    <p>{{ post.price | number }} ₸</p>
+                </div>
+            </div>
         </div>
     </div>
-    </div>
+    <app-footer></app-footer>
 </div>
