@@ -26,7 +26,7 @@ export class CarListPageComponent implements OnInit {
   constructor(private carsService: CarsService) {}
 
   ngOnInit(): void {
-    this.loadFavorites();
+    // this.loadFavorites();
     this.loadCars();
   }
 
@@ -35,32 +35,45 @@ export class CarListPageComponent implements OnInit {
   }
 
   loadFavorites(): void {
-    this.carsService.getFavorites().subscribe((favorites) => {
-      this.favoriteCars = new Set(favorites);
+    this.carsService.getFavorites().subscribe((favoriteCars) => {
+      // Создаем Set для хранения ID избранных автомобилей
+      this.favoriteCars = new Set(favoriteCars.map((car) => car.id));
     });
   }
 
   loadCars(): void {
     const params = { ...this.filterParams, search: this.searchQuery };
-    this.carsService.getCars(params).subscribe((data) => {
-      this.cars = data.map((car) => ({
-        ...car,
-        liked: this.favoriteCars.has(car.id),
-      }));
+  
+    // Загружаем все автомобили
+    this.carsService.getCars(params).subscribe((cars) => {
+      // Загружаем список избранных автомобилей
+      this.carsService.getFavorites().subscribe((favoriteCars) => {
+        const favoriteIds = new Set(favoriteCars.map((car) => car.id)); // Собираем ID избранных автомобилей
+  
+        // Обновляем список машин с учетом избранных
+        this.cars = cars.map((car) => ({
+          ...car,
+          liked: favoriteIds.has(car.id), // Отмечаем, если машина в избранном
+        }));
+  
+        // Обновляем локальный Set избранных машин
+        this.favoriteCars = favoriteIds;
+      });
     });
   }
 
   toggleLike(carId: number): void {
     if (this.favoriteCars.has(carId)) {
+      // Удаляем из избранного
       this.carsService.removeFromFavorites(carId).subscribe(() => {
-        this.favoriteCars.delete(carId);
-        this.updateCarLikeStatus(carId, false);
+        this.favoriteCars.delete(carId); // Удаляем из локального списка
+        this.updateCarLikeStatus(carId, false); // Обновляем состояние лайка в списке
       });
     } else {
-      console.log('Добавляем в избранное...');
+      // Добавляем в избранное
       this.carsService.addToFavorites(carId).subscribe(() => {
-        this.favoriteCars.add(carId);
-        this.updateCarLikeStatus(carId, true);
+        this.favoriteCars.add(carId); // Добавляем в локальный список
+        this.updateCarLikeStatus(carId, true); // Обновляем состояние лайка в списке
       });
     }
   }
