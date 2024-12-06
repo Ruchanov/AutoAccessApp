@@ -18,6 +18,8 @@ import { CarsService } from './services/cars/cars.service';
 import { SearchFormComponent } from './components/search-form/search-form.component';
 import { FilterFormComponent } from './components/filter-form/filter-form.component';
 import { LikesPageComponent } from './pages/likes-page/likes-page.component';
+import { CarDetailPageComponent } from './pages/car-detail-page/car-detail-page.component';
+import { CarItemComponent } from './components/car-item/car-item.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { LikesPageComponent } from './pages/likes-page/likes-page.component';
     CarListPageComponent,
     SearchFormComponent,
     FilterFormComponent,
-    LikesPageComponent
+    LikesPageComponent,
+    CarDetailPageComponent,
+    CarItemComponent
   ],
   imports: [
     BrowserModule,

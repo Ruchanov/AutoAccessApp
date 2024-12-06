@@ -1,0 +1,21 @@
+<div class="container" *ngIf="car; else loading">
+    <app-nav-bar></app-nav-bar>
+    <h1 class="title">{{ car.marka }} {{ car.model }}</h1>
+    <div class="detailsWrapper">
+      <div class="details">
+        <img [src]="car.image" alt="{{ car.marka }} {{ car.model }}" class="carImage" />
+        <p><strong>Год:</strong> {{ car.year }}</p>
+        <p><strong>Цена:</strong> {{ car.price }} ₸</p>
+        <p><strong>Пробег:</strong> {{ car.mileage }} km</p>
+        <p><strong>Тип кузова:</strong> {{ car.body_type }}</p>
+        <p><strong>Трансмиссия:</strong> {{ car.transmission }}</p>
+        <p><strong>Описание:</strong> {{ car.description }}</p>
+        <p><strong>Телефон:</strong> {{ car.phoneNumber }}</p>
+      </div>
+    </div>
+  </div>
+  
+  <ng-template #loading>
+    <div class="loading">Загрузка...</div>
+  </ng-template>
+  

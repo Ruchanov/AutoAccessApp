@@ -33,4 +33,5 @@ export interface Car {
   image: string;
   description: string;
   liked?: boolean;
+  phoneNumber: string;
 }

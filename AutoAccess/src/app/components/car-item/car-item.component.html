@@ -1,0 +1,20 @@
+<div class="carItem" (click)="openDetail()">
+    <img [src]="car.image" alt="{{ car.marka }} {{ car.model }}" class="carImage" />
+    <div class="carInfo">
+      <div class="header">
+        <h2>{{ car.marka }} {{ car.model }}</h2>
+        <span
+          class="likeIcon"
+          [ngClass]="{ liked: isFavorite }"
+          (click)="toggleLike($event)"
+        >
+          ❤️
+        </span>
+      </div>
+      <div class="details">
+        {{ car.year }}/{{ car.mileage }}km/{{ car.body_type }}/{{ car.transmission }}
+      </div>
+      <div class="footer">{{ car.price }} ₸</div>
+    </div>
+  </div>
+  

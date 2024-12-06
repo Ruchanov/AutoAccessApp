@@ -1,0 +1,48 @@
+.carItem {
+    background-color: #333;
+    padding: 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    transition: transform 0.2s;
+  }
+  
+  .carItem:hover {
+    transform: scale(1.05);
+  }
+  
+  .carImage {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+  
+  .carInfo {
+    text-align: center;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .likeIcon {
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+  
+  .liked {
+    color: red;
+    transform: scale(1.1);
+  }
+  
+  .details {
+    margin: 10px 0;
+  }
+  
+  .footer {
+    font-weight: bold;
+  }
+  

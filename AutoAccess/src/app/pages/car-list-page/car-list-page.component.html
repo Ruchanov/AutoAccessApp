@@ -17,27 +17,12 @@
   ></app-filter-form>
 
   <ul class="list">
-    <li *ngFor="let car of cars" class="carItem">
-      <img [src]="car.image" alt="{{ car.marka }} {{ car.model }}" class="carImage" />
-
-      <div class="carInfo">
-        <div class="header">
-          <h2>{{ car.marka }} {{ car.model }}</h2>
-
-          <span
-            class="likeIcon"
-            [ngClass]="{ liked: car.liked }"
-            (click)="toggleLike(car.id)"
-          >
-            ❤️
-          </span>
-        </div>
-
-        <div class="details">
-          {{ car.year }}/{{ car.mileage }}km/{{ car.body_type }}/{{ car.transmission }}
-        </div>
-        <div class="footer">{{ car.price }} ₸</div>
-      </div>
+    <li *ngFor="let car of cars">
+      <app-car-item
+        [car]="car"
+        [isFavorite]="favoriteCars.has(car.id)"
+        (likeToggle)="toggleLike($event)"
+      ></app-car-item>
     </li>
   </ul>
 </div>

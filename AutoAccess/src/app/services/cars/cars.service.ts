@@ -35,4 +35,7 @@ export class CarsService {
     const headers = this.getAuthHeaders();
     return this.http.post<void>(`${this.apiUrl}remove_from_favorites/`, { car_id: carId }, { headers });
   }
+  getCarById(carId: number): Observable<Car> {
+    return this.http.get<Car>(`${this.apiUrl}${carId}/`);
+  }  
 }

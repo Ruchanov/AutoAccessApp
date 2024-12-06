@@ -5,10 +5,12 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { RegisterPageComponent } from './pages/register-page/register-page.component'
 import { CarListPageComponent } from './pages/car-list-page/car-list-page.component';
 import { LikesPageComponent } from './pages/likes-page/likes-page.component';
+import { CarDetailPageComponent } from './pages/car-detail-page/car-detail-page.component';
 
 const routes: Routes = [
   { path: 'main', component: MainPageComponent },
   { path: 'cars', component: CarListPageComponent },
+  { path: 'cars/:id', component: CarDetailPageComponent },
   { path: 'login', component: LoginPageComponent },
   { path: 'register', component: RegisterPageComponent },
   { path: 'main', component: MainPageComponent },
