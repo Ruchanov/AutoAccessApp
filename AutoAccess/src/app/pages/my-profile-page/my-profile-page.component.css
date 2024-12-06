@@ -1,0 +1,48 @@
+.profile-page {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+    background-color: rgb(10, 21, 30);
+    color: white;
+  }
+  
+  .user-info-section {
+    text-align: center;
+    margin-bottom: 20px;
+    background: rgb(7, 14, 23);
+    padding: 20px;
+    border-radius: 8px;
+  }
+  
+  .posts-section {
+    margin-top: 20px;
+  }
+  
+  .create-post-button {
+    display: inline-block;
+    margin-bottom: 20px;
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 4px;
+  }
+  
+  .posts-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  
+  .post-card {
+    background: rgb(7, 14, 23);
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    color: white;
+  }
+  
+  .post-card img {
+    max-width: 100%;
+    border-radius: 8px;
+  }

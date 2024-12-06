@@ -23,6 +23,7 @@ import { CarDetailPageComponent } from './pages/car-detail-page/car-detail-page.
 import { CarItemComponent } from './components/car-item/car-item.component';
 import { CreditCalculatorComponent } from './components/credit-calculator/credit-calculator.component';
 import { CarCreatingPageComponent } from './pages/car-creating-page/car-creating-page.component';
+import { MyProfilePageComponent } from './pages/my-profile-page/my-profile-page.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { CarCreatingPageComponent } from './pages/car-creating-page/car-creating
     CarDetailPageComponent,
     CarItemComponent,
     CreditCalculatorComponent,
-    CarCreatingPageComponent
+    CarCreatingPageComponent,
+    MyProfilePageComponent
   ],
   imports: [
     BrowserModule,

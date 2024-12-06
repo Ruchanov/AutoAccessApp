@@ -7,6 +7,7 @@ import { CarListPageComponent } from './pages/car-list-page/car-list-page.compon
 import { LikesPageComponent } from './pages/likes-page/likes-page.component';
 import { CarDetailPageComponent } from './pages/car-detail-page/car-detail-page.component';
 import { CarCreatingPageComponent } from './pages/car-creating-page/car-creating-page.component';
+import { MyProfilePageComponent } from './pages/my-profile-page/my-profile-page.component';
 
 const routes: Routes = [
   { path: 'main', component: MainPageComponent },
@@ -15,9 +16,10 @@ const routes: Routes = [
   { path: 'login', component: LoginPageComponent },
   { path: 'register', component: RegisterPageComponent },
   { path: 'main', component: MainPageComponent },
+  { path: 'my-profile', component: MyProfilePageComponent },
   { path: '', redirectTo: 'main', pathMatch: 'full' },
   { path: 'likes', component: LikesPageComponent },
-  { path: 'createcar', component: CarCreatingPageComponent },
+  { path: 'my-profile/createPost', component: CarCreatingPageComponent },
   { path: '**', redirectTo: 'login' }
 ];
 
