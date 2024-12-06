@@ -1,0 +1,39 @@
+<div class="calculator">
+    <h2>Credit Calculator</h2>
+    <div>
+      <label>Car Price: </label>
+      <input
+        type="number"
+        [(ngModel)]="price"
+        (input)="calculateMonthlyPayment()"
+        class="input"
+      />
+    </div>
+    <div>
+      <label>Down Payment: </label>
+      <input
+        type="number"
+        [(ngModel)]="downPayment"
+        (input)="calculateMonthlyPayment()"
+        [ngClass]="{ inputError: !isDownPaymentValid }"
+      />
+      <p *ngIf="!isDownPaymentValid" class="errorText">
+        Down payment must be between 1,000,000 and the car price.
+      </p>
+    </div>
+    <div>
+      <label>Term (months): </label>
+      <select [(ngModel)]="term" (change)="calculateMonthlyPayment()" class="select">
+        <option value="12">12 months</option>
+        <option value="24">24 months</option>
+        <option value="36">36 months</option>
+        <option value="48">48 months</option>
+        <option value="60">60 months</option>
+      </select>
+    </div>
+    <p>Monthly Payment: {{ monthlyPayment ? monthlyPayment + ' тг' : 'N/A' }}</p>
+    <a href="https://guide.kaspi.kz/client/ru/auto_credit/receive">
+      <button>Расчитать кредит</button>
+    </a>
+  </div>
+  

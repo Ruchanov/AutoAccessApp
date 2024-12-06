@@ -20,6 +20,7 @@ import { FilterFormComponent } from './components/filter-form/filter-form.compon
 import { LikesPageComponent } from './pages/likes-page/likes-page.component';
 import { CarDetailPageComponent } from './pages/car-detail-page/car-detail-page.component';
 import { CarItemComponent } from './components/car-item/car-item.component';
+import { CreditCalculatorComponent } from './components/credit-calculator/credit-calculator.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { CarItemComponent } from './components/car-item/car-item.component';
     FilterFormComponent,
     LikesPageComponent,
     CarDetailPageComponent,
-    CarItemComponent
+    CarItemComponent,
+    CreditCalculatorComponent
   ],
   imports: [
     BrowserModule,

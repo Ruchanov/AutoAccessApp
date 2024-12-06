@@ -11,6 +11,7 @@
         <p><strong>Трансмиссия:</strong> {{ car.transmission }}</p>
         <p><strong>Описание:</strong> {{ car.description }}</p>
         <p><strong>Телефон:</strong> {{ car.phoneNumber }}</p>
+        <app-credit-calculator [defaultPrice]="car.price"></app-credit-calculator>
       </div>
     </div>
   </div>
