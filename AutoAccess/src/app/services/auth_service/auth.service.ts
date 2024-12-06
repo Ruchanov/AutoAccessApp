@@ -20,13 +20,15 @@ export class AuthService {
     return this.http.post(`${this.baseUrl}/register/`, user);
   }
 
-  setTokens(access: string, refresh: string) {
+  setTokens(access: string, refresh: string, userId: number): void  {
     localStorage.setItem('access_token', access);
     localStorage.setItem('refresh_token', refresh);
+    localStorage.setItem('user_id', userId.toString());
   }
 
-  clearTokens() {
+  clearTokens(): void  {
     localStorage.removeItem('access_token');
     localStorage.removeItem('refresh_token');
+    localStorage.removeItem('user_id');
   }
 }

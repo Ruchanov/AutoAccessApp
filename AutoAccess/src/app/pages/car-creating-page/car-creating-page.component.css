@@ -1,0 +1,49 @@
+.carCreatingContainer {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #1a1a1a;
+    color: #fff;
+  }
+  
+  .form {
+    width: 100%;
+    max-width: 600px;
+  }
+  
+  .label {
+    display: block;
+    margin-bottom: 10px;
+    color: #fff;
+  }
+  
+  .input, .textarea, .fileInput {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+  }
+  
+  .textarea {
+    height: 100px;
+  }
+  
+  .submitButton {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+  
+  .submitButton:hover {
+    background-color: #0056b3;
+  }
+  

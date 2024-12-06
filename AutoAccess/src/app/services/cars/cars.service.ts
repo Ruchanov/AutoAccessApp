@@ -38,4 +38,11 @@ export class CarsService {
   getCarById(carId: number): Observable<Car> {
     return this.http.get<Car>(`${this.apiUrl}${carId}/`);
   }  
+  createCar(data: FormData): Observable<any> {
+    return this.http.post(`${this.apiUrl}create/`, data, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('access_token')}`
+      }
+    });
+  }
 }

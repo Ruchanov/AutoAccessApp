@@ -1,8 +1,3 @@
-// export interface nonAuthUser{
-//     username: string;
-//     email: string;
-//     password: string;
-//   }
 export interface NonAuthUser {
   username: string;
   email: string;
@@ -33,5 +28,17 @@ export interface Car {
   image: string;
   description: string;
   liked?: boolean;
+  phoneNumber: string;
+}
+export interface CarFormData {
+  marka: string;
+  model: string;
+  year: number | null;
+  price: number | null;
+  mileage: number | null;
+  body_type: string;
+  transmission: string;
+  description: string;
+  image: File | null;
   phoneNumber: string;
 }

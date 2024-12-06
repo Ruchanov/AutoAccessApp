@@ -6,6 +6,7 @@ import { RegisterPageComponent } from './pages/register-page/register-page.compo
 import { CarListPageComponent } from './pages/car-list-page/car-list-page.component';
 import { LikesPageComponent } from './pages/likes-page/likes-page.component';
 import { CarDetailPageComponent } from './pages/car-detail-page/car-detail-page.component';
+import { CarCreatingPageComponent } from './pages/car-creating-page/car-creating-page.component';
 
 const routes: Routes = [
   { path: 'main', component: MainPageComponent },
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'main', component: MainPageComponent },
   { path: '', redirectTo: 'main', pathMatch: 'full' },
   { path: 'likes', component: LikesPageComponent },
+  { path: 'createcar', component: CarCreatingPageComponent },
   { path: '**', redirectTo: 'login' }
 ];
 

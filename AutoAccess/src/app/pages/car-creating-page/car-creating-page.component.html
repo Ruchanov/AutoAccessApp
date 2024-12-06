@@ -1,0 +1,38 @@
+<div class="carCreatingContainer">
+    <app-nav-bar></app-nav-bar>
+    <h1>Create Car Post</h1>
+    <form (submit)="handleSubmit($event)" class="form">
+      <label class="label">Marka:
+        <input type="text" name="marka" [(ngModel)]="formData.marka" required class="input" />
+      </label>
+      <label class="label">Model:
+        <input type="text" name="model" [(ngModel)]="formData.model" required class="input" />
+      </label>
+      <label class="label">Year:
+        <input type="number" name="year" [(ngModel)]="formData.year" required class="input" />
+      </label>
+      <label class="label">Price:
+        <input type="number" name="price" [(ngModel)]="formData.price" required class="input" />
+      </label>
+      <label class="label">Mileage:
+        <input type="number" name="mileage" [(ngModel)]="formData.mileage" required class="input" />
+      </label>
+      <label class="label">Body Type:
+        <input type="text" name="body_type" [(ngModel)]="formData.body_type" required class="input" />
+      </label>
+      <label class="label">Transmission:
+        <input type="text" name="transmission" [(ngModel)]="formData.transmission" required class="input" />
+      </label>
+      <label class="label">Description:
+        <textarea name="description" [(ngModel)]="formData.description" required class="textarea"></textarea>
+      </label>
+      <label class="label">Image:
+        <input type="file" (change)="handleImageChange($event)" accept="image/*" class="fileInput" />
+      </label>
+      <label class="label">Phone Number:
+        <input type="number" name="phoneNumber" [(ngModel)]="formData.phoneNumber" required class="input" />
+      </label>
+      <button type="submit" class="submitButton">Create Post</button>
+    </form>
+  </div>
+  
