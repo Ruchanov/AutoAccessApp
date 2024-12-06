@@ -1,38 +1,61 @@
 <div class="carCreatingContainer">
-    <app-nav-bar></app-nav-bar>
-    <h1>Create Car Post</h1>
-    <form (submit)="handleSubmit($event)" class="form">
-      <label class="label">Marka:
-        <input type="text" name="marka" [(ngModel)]="formData.marka" required class="input" />
-      </label>
-      <label class="label">Model:
-        <input type="text" name="model" [(ngModel)]="formData.model" required class="input" />
-      </label>
-      <label class="label">Year:
-        <input type="number" name="year" [(ngModel)]="formData.year" required class="input" />
-      </label>
-      <label class="label">Price:
-        <input type="number" name="price" [(ngModel)]="formData.price" required class="input" />
-      </label>
-      <label class="label">Mileage:
-        <input type="number" name="mileage" [(ngModel)]="formData.mileage" required class="input" />
-      </label>
-      <label class="label">Body Type:
-        <input type="text" name="body_type" [(ngModel)]="formData.body_type" required class="input" />
-      </label>
-      <label class="label">Transmission:
-        <input type="text" name="transmission" [(ngModel)]="formData.transmission" required class="input" />
-      </label>
-      <label class="label">Description:
-        <textarea name="description" [(ngModel)]="formData.description" required class="textarea"></textarea>
-      </label>
-      <label class="label">Image:
-        <input type="file" (change)="handleImageChange($event)" accept="image/*" class="fileInput" />
-      </label>
-      <label class="label">Phone Number:
-        <input type="number" name="phoneNumber" [(ngModel)]="formData.phoneNumber" required class="input" />
-      </label>
-      <button type="submit" class="submitButton">Create Post</button>
-    </form>
-  </div>
-  
+  <h1>Create Car Post</h1>
+  <form [formGroup]="carForm" (ngSubmit)="submitForm()">
+    <div>
+      <label for="marka">Marka</label>
+      <input id="marka" formControlName="marka" type="text" placeholder="Enter Marka" />
+    </div>
+    <div>
+      <label for="model">Model</label>
+      <input id="model" formControlName="model" type="text" placeholder="Enter Model" />
+    </div>
+    <div>
+      <label for="year">Year</label>
+      <input id="year" formControlName="year" type="number" placeholder="Enter Year" />
+    </div>
+    <div>
+      <label for="price">Price</label>
+      <input id="price" formControlName="price" type="number" placeholder="Enter Price" />
+    </div>
+    <div>
+      <label for="mileage">Mileage</label>
+      <input id="mileage" formControlName="mileage" type="number" placeholder="Enter Mileage" />
+    </div>
+    <div>
+      <label for="body_type">Body Type</label>
+      <input id="body_type" formControlName="body_type" type="text" placeholder="Enter Body Type" />
+    </div>
+    <div>
+      <label for="transmission">Transmission</label>
+      <input
+        id="transmission"
+        formControlName="transmission"
+        type="text"
+        placeholder="Enter Transmission"
+      />
+    </div>
+    <div>
+      <label for="description">Description</label>
+      <textarea
+        id="description"
+        formControlName="description"
+        rows="3"
+        placeholder="Enter Description"
+      ></textarea>
+    </div>
+    <div>
+      <label for="phoneNumber">Phone Number</label>
+      <input
+        id="phoneNumber"
+        formControlName="phoneNumber"
+        type="text"
+        placeholder="Enter Phone Number"
+      />
+    </div>
+    <div>
+      <label for="image">Image</label>
+      <input id="image" type="file" (change)="onFileChange($event)" />
+    </div>
+    <button type="submit" [disabled]="carForm.invalid">Create</button>
+  </form>
+</div>

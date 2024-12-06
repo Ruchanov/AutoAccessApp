@@ -18,6 +18,11 @@ export class CarItemComponent {
     this.router.navigate(['/cars', this.car.id]);
   }
 
+  isLiked(car: Car): boolean {
+    return !!car.liked; // Преобразует undefined в false
+  }
+  
+
   toggleLike(event: Event): void {
     event.stopPropagation(); // Остановить всплытие события
     this.likeToggle.emit(this.car.id);

@@ -1,7 +1,12 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { CarsService } from '../../services/cars/cars.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CarFormData } from '../../models';
+// import { Component } from '@angular/core';
+// import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+// import { CarsService } from '../../services/cars.service';
+// import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-car-creating-page',
@@ -9,67 +14,61 @@ import { CarFormData } from '../../models';
   styleUrls: ['./car-creating-page.component.css']
 })
 export class CarCreatingPageComponent {
-  formData: CarFormData = {
-    marka: '',
-    model: '',
-    year: null,
-    price: null,
-    mileage: null,
-    body_type: '',
-    transmission: '',
-    description: '',
-    image: null,
-    phoneNumber: '',
-  };
+  carForm: FormGroup;
+  imageFile: File | null = null;
 
-  constructor(private carsService: CarsService, private router: Router) {}
-
-  // Функция getUserId
-  getUserName(): string | null {
-    const username = localStorage.getItem('username') || '';
-    return username;
+  constructor(
+    private fb: FormBuilder,
+    private carsService: CarsService,
+    private router: Router
+  ) {
+    this.carForm = this.fb.group({
+      marka: ['', Validators.required],
+      model: ['', Validators.required],
+      year: [null, Validators.required],
+      price: [null, Validators.required],
+      mileage: [null, Validators.required],
+      body_type: ['', Validators.required],
+      transmission: ['', Validators.required],
+      description: [''],
+      phoneNumber: ['', Validators.required],
+    });
   }
 
-  handleImageChange(event: Event): void {
-    const input = event.target as HTMLInputElement;
-    if (input.files && input.files[0]) {
-      this.formData.image = input.files[0];
+  onFileChange(event: any): void {
+    const file = event.target.files[0];
+    if (file) {
+      this.imageFile = file;
     }
   }
 
-  handleSubmit(event: Event): void {
-    event.preventDefault();
-
-    const data = new FormData();
-    (Object.keys(this.formData) as Array<keyof CarFormData>).forEach((key) => {
-      if (key === 'image' && this.formData.image) {
-        data.append('image', this.formData.image);
-      } else if (this.formData[key] !== null) {
-        data.append(key, String(this.formData[key]));
-      }
-    });
-
-    const username = this.getUserName();
-    if (!username) {
-      console.error('User ID is missing. Please log in.');
-      alert('Please log in to create a car post.');
+  submitForm(): void {
+    if (this.carForm.invalid) {
       return;
     }
 
-    data.append('user', username);
-
-    data.forEach((value, key) => {
-      console.log(`${key}: ${value}`);
+    const formData = new FormData();
+    Object.keys(this.carForm.value).forEach((key) => {
+      if (this.carForm.value[key] !== null) {
+        formData.append(key, this.carForm.value[key]);
+      }
     });
 
-    this.carsService.createCar(data).subscribe({
-      next: (response) => {
+    const userId = parseInt(localStorage.getItem('user_id') || '0', 10);
+    formData.append('user', userId.toString());
+
+    if (this.imageFile) {
+      formData.append('image', this.imageFile);
+    }
+
+    this.carsService.createCar(formData).subscribe(
+      (response) => {
         console.log('Car created successfully:', response);
-        this.router.navigate(['/cars']);
+        this.router.navigate(['/']); // Redirect to homepage or another route
       },
-      error: (error) => {
+      (error) => {
         console.error('Error creating car:', error);
-      },
-    });
+      }
+    );
   }
 }

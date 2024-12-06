@@ -10,6 +10,11 @@
   .carItem:hover {
     transform: scale(1.05);
   }
+
+  .likeIcon:hover {
+    color: black;
+    background-color: white;
+  }
   
   .carImage {
     width: 100%;
@@ -35,6 +40,7 @@
   
   .liked {
     color: red;
+    border-radius: 100%;
     transform: scale(1.1);
   }
   

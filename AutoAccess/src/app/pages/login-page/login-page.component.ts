@@ -18,6 +18,7 @@ export class LoginPageComponent {
   onSubmit() {
     this.authService.login(this.username, this.password).subscribe({
       next: (response: any) => {
+        console.log(response)
         this.authService.setTokens(response.access, response.refresh, this.username);
         this.router.navigate(['/cars']);
       },
