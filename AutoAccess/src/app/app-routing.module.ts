@@ -8,6 +8,7 @@ import { LikesPageComponent } from './pages/likes-page/likes-page.component';
 import { CarDetailPageComponent } from './pages/car-detail-page/car-detail-page.component';
 import { CarCreatingPageComponent } from './pages/car-creating-page/car-creating-page.component';
 import { MyProfilePageComponent } from './pages/my-profile-page/my-profile-page.component';
+import { AboutPageComponent } from './pages/about-page/about-page.component';
 
 const routes: Routes = [
   { path: 'main', component: MainPageComponent },
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'main', pathMatch: 'full' },
   { path: 'likes', component: LikesPageComponent },
   { path: 'my-profile/createPost', component: CarCreatingPageComponent },
+  { path: 'about', component: AboutPageComponent },
   { path: '**', redirectTo: 'login' }
 ];
 
