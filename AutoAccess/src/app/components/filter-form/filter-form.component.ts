@@ -14,6 +14,7 @@ export class FilterFormComponent {
     min_year: '',
     max_year: ''
   };
+
   @Output() filterChange = new EventEmitter<any>();
   @Output() applyFilter = new EventEmitter<void>();
 
