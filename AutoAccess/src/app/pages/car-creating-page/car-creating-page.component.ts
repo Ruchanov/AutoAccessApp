@@ -25,9 +25,9 @@ export class CarCreatingPageComponent {
   constructor(private carsService: CarsService, private router: Router) {}
 
   // Функция getUserId
-  getUserId(): number | null {
-    const userId = localStorage.getItem('user_id');
-    return userId ? parseInt(userId, 10) : null;
+  getUserName(): string | null {
+    const username = localStorage.getItem('username') || '';
+    return username;
   }
 
   handleImageChange(event: Event): void {
@@ -49,14 +49,14 @@ export class CarCreatingPageComponent {
       }
     });
 
-    const userId = this.getUserId();
-    if (!userId) {
+    const username = this.getUserName();
+    if (!username) {
       console.error('User ID is missing. Please log in.');
       alert('Please log in to create a car post.');
       return;
     }
 
-    data.append('user', userId.toString());
+    data.append('user', username);
 
     data.forEach((value, key) => {
       console.log(`${key}: ${value}`);
