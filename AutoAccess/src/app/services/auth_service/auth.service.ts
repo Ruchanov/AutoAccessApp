@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { NonAuthUser } from '../../models';
 import { Observable } from 'rxjs';
+import { jwtDecode } from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +25,13 @@ export class AuthService {
     localStorage.setItem('access_token', access);
     localStorage.setItem('refresh_token', refresh);
     localStorage.setItem('username', username);
+
+    const decodedToken: any = jwtDecode(access);
+    const userId = decodedToken.user_id;
+
+    if (userId) {
+      localStorage.setItem('user_id', userId.toString());
+    }
   }
 
   clearTokens(): void  {

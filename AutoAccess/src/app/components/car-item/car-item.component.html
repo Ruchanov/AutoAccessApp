@@ -3,12 +3,17 @@
     <div class="carInfo">
       <div class="header">
         <h2>{{ car.marka }} {{ car.model }}</h2>
-        <span
-          class="likeIcon"
-          [ngClass]="{ liked: isFavorite }"
-          (click)="toggleLike($event)"
-        >
-          ❤️
+        <span class="likeIcon" (click)="toggleLike($event)">
+          <ng-container *ngIf="isLiked(car); else notLiked">
+            ❤️
+          </ng-container>
+          <ng-template #notLiked>
+            <div
+              style="border: 1px solid white; border-radius: 100%; padding: 5px; display: flex; justify-content: center; align-items: center"
+            >
+              x
+            </div>
+          </ng-template>
         </span>
       </div>
       <div class="details">

@@ -10,7 +10,7 @@ import { MainPageComponent } from './pages/main-page/main-page.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { RegisterPageComponent } from './pages/register-page/register-page.component'
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InputsCheckerDirective } from './directives/password-length-checker/inputs-checker.directive';
 import { EmailCorrectnessCheckerDirective } from './directives/email-correctness-checker/email-correctness-checker.directive';
 import { UsernameInputFillCheckerDirective } from './directives/username-filling-checker/username-input-fill-checker.directive';
@@ -52,6 +52,7 @@ import { AboutPageComponent } from './pages/about-page/about-page.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule, 
     HttpClientModule
   ],
   providers: [
