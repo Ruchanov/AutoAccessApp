@@ -11,3 +11,32 @@
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 20px;
 }
+
+button.filterButton {
+  flex: 0 0 10%; /* Ширина 10% */
+  max-width: 10%; /* Ограничиваем ширину */
+  padding: 10px;
+  font-size: 14px;
+  text-align: center;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button.filterButton:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+button.filterButton:active {
+  background-color: #003f8c;
+  transform: scale(0.95);
+}
+
+.filterButton:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
+}

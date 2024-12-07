@@ -15,6 +15,6 @@ export class MainPageComponent {
   }
 
   navigateToListCar(): void {
-    this.router.navigate(['/createcar']); 
+    this.router.navigate(['/my-profile']); 
   }
 }
