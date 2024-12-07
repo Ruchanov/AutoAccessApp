@@ -1,22 +1,21 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MainPageComponent } from './main-page.component';
 import { Router } from '@angular/router';
-import { NavBarComponent } from '../../components/nav-bar/nav-bar.component';
-import { FooterComponent } from '../../components/footer/footer.component';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 describe('MainPageComponent', () => {
   let component: MainPageComponent;
   let fixture: ComponentFixture<MainPageComponent>;
-  let mockRouter: any;
+  let mockRouter: jasmine.SpyObj<Router>;
 
   beforeEach(async () => {
-    mockRouter = {
-      navigate: jasmine.createSpy('navigate')
-    };
+    // Мокаем Router
+    mockRouter = jasmine.createSpyObj('Router', ['navigate']);
 
     await TestBed.configureTestingModule({
-      declarations: [MainPageComponent, NavBarComponent, FooterComponent],
-      providers: [{ provide: Router, useValue: mockRouter }]
+      declarations: [MainPageComponent],
+      providers: [{ provide: Router, useValue: mockRouter }],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA], // Подключаем, чтобы игнорировать неизвестные элементы
     }).compileComponents();
   });
 
@@ -26,6 +25,10 @@ describe('MainPageComponent', () => {
     fixture.detectChanges();
   });
 
+  it('should create the component', () => {
+    expect(component).toBeTruthy();
+  });
+
   it('should navigate to buy car page', () => {
     component.navigateToBuyCar();
     expect(mockRouter.navigate).toHaveBeenCalledWith(['/cars']);
@@ -33,6 +36,6 @@ describe('MainPageComponent', () => {
 
   it('should navigate to list car page', () => {
     component.navigateToListCar();
-    expect(mockRouter.navigate).toHaveBeenCalledWith(['/createcar']);
+    expect(mockRouter.navigate).toHaveBeenCalledWith(['/my-profile']);
   });
 });
