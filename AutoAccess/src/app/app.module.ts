@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { provideHttpClient, withFetch } from '@angular/common/http';
@@ -25,6 +25,7 @@ import { CreditCalculatorComponent } from './components/credit-calculator/credit
 import { CarCreatingPageComponent } from './pages/car-creating-page/car-creating-page.component';
 import { MyProfilePageComponent } from './pages/my-profile-page/my-profile-page.component';
 import { AboutPageComponent } from './pages/about-page/about-page.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,12 @@ import { AboutPageComponent } from './pages/about-page/about-page.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule, 
-    HttpClientModule
+    HttpClientModule, ServiceWorkerModule.register('ngsw-worker.js', {
+  enabled: !isDevMode(),
+  // Register the ServiceWorker as soon as the application is stable
+  // or after 30 seconds (whichever comes first).
+  registrationStrategy: 'registerWhenStable:30000'
+})
   ],
   providers: [
     provideHttpClient(withFetch()),
