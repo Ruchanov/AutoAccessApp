@@ -12,25 +12,26 @@
   gap: 20px;
 }
 
-.filterButton {
-  padding: 10px 20px;
-  font-size: 16px;
-  font-weight: bold;
-  color: white;
+button.filterButton {
+  flex: 0 0 10%; /* Ширина 10% */
+  max-width: 10%; /* Ограничиваем ширину */
+  padding: 10px;
+  font-size: 14px;
+  text-align: center;
   background-color: #007bff;
+  color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.filterButton:hover {
+button.filterButton:hover {
   background-color: #0056b3;
   transform: scale(1.05);
 }
 
-.filterButton:active {
+button.filterButton:active {
   background-color: #003f8c;
   transform: scale(0.95);
 }

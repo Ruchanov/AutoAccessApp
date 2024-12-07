@@ -24,6 +24,7 @@
   }
   
   .carItem {
+    position: relative;
     background-color: #333;
     padding: 15px;
     border-radius: 8px;
@@ -47,6 +48,7 @@
   }
   
   .likeIcon {
+    right: 50;
     cursor: pointer;
     transition: transform 0.2s;
   }
