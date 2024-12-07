@@ -3,11 +3,14 @@
 
   <h1 class="title">Список автомобилей</h1>
 
-  <app-search-form (searchQueryChange)="searchQuery = $event; loadCars()"></app-search-form>
+  <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
+    <app-search-form style="flex: 0 0 85%; max-width: 85%;" (searchQueryChange)="searchQuery = $event; loadCars()"></app-search-form>
 
-  <button class="filterButton" (click)="toggleFilter()">
-    {{ isFilterVisible ? 'Скрыть фильтры' : 'Показать фильтры' }}
-  </button>
+    <button class="filterButton" (click)="toggleFilter()">
+      {{ isFilterVisible ? 'Скрыть фильтры' : 'Показать фильтры' }}
+    </button>
+  </div>
+  
 
   <app-filter-form
     *ngIf="isFilterVisible"
